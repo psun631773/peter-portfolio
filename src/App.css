@@ -86,7 +86,7 @@ p {
 }
 
 .btn-github:hover {
-  color: var(--github);
+  color: var(--github) ;
   background-color: var(--white);
 }
 
@@ -461,6 +461,15 @@ h2 {
 /* Portfolio Ends */
 
 /* Testimonial */
+/* .git-hub-link {
+  text-decoration: none;
+  color: white;
+}
+
+.git-hub-link:hover {
+  color: var(--github) !important;
+} */
+
 .testimonial--section {
   display: flex;
   padding: 112px 84.3px;
