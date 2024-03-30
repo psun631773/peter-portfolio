@@ -5,10 +5,10 @@ function Footer() {
   return (
     <footer className="footer--container">
       <div className="footer--link--container">
-        <div>
+        {/* <div>
           <img src="./logo.png" alt="Logo" />
-        </div>
-        <div className="footer--items">
+        </div> */}
+        {/* <div className="footer--items">
           <ul>
             <li>
               <Link
@@ -62,27 +62,13 @@ function Footer() {
               >
                 Experience
               </Link>
-            </li>
-            {/* <li>
-              <Link
-                activeClass="navbar--active-content"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-                to="Contact"
-                className="text-md"
-              >
-                Contact
-              </Link>
-            </li> */}
-           
+            </li>        
           </ul>
-        </div>
+        </div> */}
         <div className="footer--social--icon">
           <ul>
             <li>
-              <a
+              {/* <a
                 href="https://www.facebook.com/"
                 className="navbar--content"
                 target="_blank"
@@ -100,10 +86,10 @@ function Footer() {
                     fill="black"
                   />
                 </svg>
-              </a>
+              </a> */}
             </li>
             <li>
-              <a
+              {/* <a
                 href="https://www.instagram.com/"
                 className="navbar--content"
                 target="_blank"
@@ -123,10 +109,10 @@ function Footer() {
                     fill="black"
                   />
                 </svg>
-              </a>
+              </a> */}
             </li>
             <li>
-              <a
+              {/* <a
                 href="https://www.twitter.com/"
                 className="navbar--content"
                 target="_blank"
@@ -144,10 +130,10 @@ function Footer() {
                     fill="black"
                   />
                 </svg>
-              </a>
+              </a> */}
             </li>
             <li>
-              <a
+              {/* <a
                 href="https://www.linkedin.com/"
                 className="navbar--content"
                 target="_blank"
@@ -167,7 +153,7 @@ function Footer() {
                     fill="black"
                   />
                 </svg>
-              </a>
+              </a> */}
             </li>
           </ul>
         </div>

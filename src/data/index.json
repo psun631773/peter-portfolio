@@ -60,7 +60,7 @@
       "id": "1",
       "count": "5",
       "src": "./img/avatar-image.png",
-      "description": "Implemented the full-cycle development of the TekoAI chatbot, from initial concept and architecture design through to implementation and deployment, using Node.js, Express, React, Ant Design, JavaScript, HTML5, Python,Django, AWS",
+      "description": "Implemented the full-cycle development of the TekoAI chatbot, from concept design through to implementation and deployment",
       "author_name": "Teko AI",
       "author_designation": "Canada"
     },
@@ -68,7 +68,7 @@
       "id": "2",
       "count": "5",
       "src": "./img/avatar-image-2.png",
-      "description": "Actively engaged in designing and optimizing the logistics system, enhancing railway workflows for better efficiency",
+      "description": "Completed the migration and upgrade of the IBM Rational product suite, ensuring seamless data transfer and minimal downtime. ",
       "author_name": "IBM",
       "author_designation": "China"
     },
@@ -76,7 +76,7 @@
       "id": "3",
       "count": "5",
       "src": "./img/avatar-image-1.png",
-      "description": "Developed Warehouse and Dispatch modules for an MES, using C# to improve production management",
+      "description": "Developed Warehouse and Dispatch modules for an MES and finacial model ERP logistic System to improve production management.",
       "author_name": "Thousand Maple",
       "author_designation": "China"
     },
@@ -84,8 +84,8 @@
       "id": "3",
       "count": "5",
       "src": "./img/avatar-image-2.png",
-      "description": "Played a pivotal role in the development of data bus and message bus platform-level products, employing Java, SpringBoot, Mybatis, Kafka, RabbitMQ, docker,cloud computing,MongoDB",
-      "author_name": "Ansteel Huayelian",
+      "description": "Played a pivotal role in the development of data bus platform products,  empowered the company to manage data and messages.                                        ",
+      "author_name": "Huayelian",
       "author_designation": "China"
     }
   ]

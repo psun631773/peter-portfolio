@@ -1,14 +1,70 @@
 import data from "../../data/index.json";
-
+import { useAnimation } from '../../context/AnimationContext';
+import React, { useState, useEffect, useRef } from 'react';
+import Modal from "./Model";
 export default function MyPortfolio() {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState("");
+
+  // Handle opening the modal with content
+  const handleLinkClick = (content) => {
+    setModalContent(content);
+    setIsModalOpen(true);
+  };
+
+  // Handle closing the modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+
+
+  const { playAnimation } = useAnimation();
+  const [animationClass, setAnimationClass] = useState('');
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setAnimationClass('slideUpFadeIn');
+            setTimeout(() => {
+              setAnimationClass('');
+            }, 3000); // 确保这里的时间与CSS中的动画时间相匹配
+          }
+        });
+      },
+      {
+        threshold: [0, 0.5, 1] // 从0%到100%都触发
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (playAnimation) {
+      setAnimationClass('slideUpFadeIn');
+      setTimeout(() => {
+        setAnimationClass('');
+      }, 2000); // 确保这里的时间与CSS中的动画时间相匹配
+    }
+  }, [playAnimation]);
   return (
-    <section className="portfolio--section" id="MyPortfolio">
+    <section ref={sectionRef} className={`portfolio--section ${animationClass}`} id="MyPortfolio">
+      {/* <section className="portfolio--section" id="MyPortfolio"> */}
       <div className="portfolio--container-box">
         <div className="portfolio--container">
           <p className="sub--title">Recent Projects</p>
           <h2 className="section--heading">My Projects</h2>
         </div>
-        <div>
+        {/* <div>
           <button className="btn btn-github">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -27,20 +83,20 @@ export default function MyPortfolio() {
             <a href="https://github.com/psun631773"  target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}> Visit My GitHub </a>
 
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="portfolio--section--container">
         {data?.portfolio?.map((item, index) => (
-          <div key={index} className="portfolio--section--card">
+          <div key={index} className="portfolio--section--card" >
             <div className="portfolio--section--img">
               <img src={item.src} alt="Placeholder" />
             </div>
             <div className="portfolio--section--card--content">
               <div>
                 <h3 className="portfolio--section--title">{item.title}</h3>
-                <p className="text-md">{item.description}</p>
+                {/* <p className="text-md">{item.description}</p> */}
               </div>
-              <p className="text-sm portfolio--link">
+              <p className="text-sm portfolio--link" onClick={() => handleLinkClick(item.description)}>
                 {item.link}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -62,6 +118,9 @@ export default function MyPortfolio() {
           </div>
         ))}
       </div>
+      {/* Add your modal component here and pass in the required props */}
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} content={modalContent} />
+
     </section>
   );
 }

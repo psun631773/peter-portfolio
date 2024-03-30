@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
-
+import { useAnimation } from '../../context/AnimationContext';
 function Navbar() {
-  const [navActive, setNavActive] = useState(false);
-  const [isVisible, setIsVisible] = useState(false); // 新状态控制可见性
-  useEffect(() => {
-    // 延迟100ms让页面稳定后再展示导航栏，根据需要调整时间
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 300);
 
-    return () => clearTimeout(timer);
-  }, []);
+  const { setPlayAnimation } = useAnimation();
+
+  const handleLinkClick = () => {
+    setPlayAnimation(true); // 触发动画
+    // 其他逻辑，如关闭菜单等
+    closeMenu();
+  };
+  const [navActive, setNavActive] = useState(false);
   const toggleNav = () => {
     setNavActive(!navActive);
   };
@@ -33,15 +32,9 @@ function Navbar() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    if (window.innerWidth <= 1200) {
-      closeMenu;
-    }
-  }, []);
-
   return (
-    <nav className={`navbar ${navActive ? "active" : ""} ${isVisible ? "visible" : ""}`}>
+    // <nav className={`navbar ${navActive ? "active" : ""} ${isVisible ? "visible" : ""}`}>
+     <nav className={`navbar ${navActive ? "active" : ""} `}> 
       <div>
         <img src="./logo.png" alt="Logo" />
       </div>
@@ -57,11 +50,11 @@ function Navbar() {
         <ul>
           <li>
             <Link
-              onClick={closeMenu}
+              onClick={handleLinkClick}
               activeClass="navbar--active-content"
               spy={true}
               smooth={true}
-              offset={-70}
+               offset={-50}
               duration={500}
               to="heroSection"
               className="navbar--content"
@@ -71,40 +64,26 @@ function Navbar() {
           </li>
           <li>
             <Link
-              onClick={closeMenu}
+
+              onClick={handleLinkClick} // 使用新的处理函数
               activeClass="navbar--active-content"
               spy={true}
               smooth={true}
-              offset={-70}
+              offset={70}
               duration={500}
               to="mySkills"
               className="navbar--content"
             >
-              MySkills
+              Abilities
             </Link>
           </li>
-
-          {/* <li>
-            <Link
-              onClick={closeMenu}
-              activeClass="navbar--active-content"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              to="AboutMe"
-              className="navbar--content"
-            >
-              About Me
-            </Link>
-          </li> */}
           <li>
             <Link
               onClick={closeMenu}
               activeClass="navbar--active-content"
               spy={true}
               smooth={true}
-              offset={-70}
+              offset={150}
               duration={500}
               to="MyPortfolio"
               className="navbar--content"
@@ -118,7 +97,7 @@ function Navbar() {
               activeClass="navbar--active-content"
               spy={true}
               smooth={true}
-              offset={-60}
+              offset={170}
               duration={500}
               to="testimonial"
               className="navbar--content"
@@ -129,12 +108,12 @@ function Navbar() {
         </ul>
       </div>
       <Link
-        onClick={closeMenu}
+        onClick={handleLinkClick}
         activeClass="navbar--active-content"
         spy={true}
         smooth={true}
         // smooth="easeInOutCubic" // 使用非匀速的缓动函数
-        offset={-50}
+        // offset={50}
         duration={500}
         to="Contact"
         className="btn btn-outline-primary"
